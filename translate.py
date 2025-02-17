@@ -514,7 +514,7 @@ def main(args):
     assert args.lang_col in df.columns, ValueError(f'--lang_col column "{args.lang_col}" not found in data frame.')
     
     if args.test:
-        if args.verbose: log(f'Running in test mode. Using {args.batch_size} random samples from each language.')
+        if args.verbose: log(f'Running in test mode. Using {args.test_n} random samples from each language.')
         df = df.groupby(args.lang_col).sample(args.test_n, random_state=1234, replace=True).drop_duplicates().sample(frac=1.0, random_state=1234).reset_index(drop=True)
 
     # translate
